@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine?</title>
+
+<style>
+  body {
+    font-family: 'Comic Sans MS', cursive;
+    text-align: center;
+    background: pink;
+    padding-top: 100px;
+    overflow: hidden;
+  }
+
+  h1, h2, p {
+    color: red;
+  }
+
+  button {
+    font-size: 1.2em;
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  #yesBtn {
+    background-color: red;
+    color: white;
+  }
+
+  #noBtn {
+    background-color: white;
+    color: red;
+    border: 2px solid red;
+    position: absolute;
+  }
+
+  /* ⏳ Loading Screen */
+  #loading {
+    display: none;
+    font-size: 2em;
+    margin-top: 50px;
+    animation: pulse 1s infinite;
+  }
+
+  @keyframes pulse {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+  }
+
+  /* 🎉 Confetti */
+  .confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    animation: fall 3s linear infinite;
+  }
+
+  @keyframes fall {
+    from { transform: translateY(-10px) rotate(0deg); }
+    to { transform: translateY(100vh) rotate(360deg); }
+  }
+</style>
+</head>
+
+<body>
+
+<h1 id="question">Will you be my Valentine, NIKITA? ❤️</h1>
+
+<button id="yesBtn">Yes 💖</button>
+<button id="noBtn">No 🙃</button>
+
+<div id="loading">Loading your surprise… 💕</div>
+
+<script>
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+  const loading = document.getElementById("loading");
+
+  // 😏 No button runs away
+  noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  });
+
+  // ⏳ Fake loading → 💖 Surprise
+  yesBtn.addEventListener("click", () => {
+    yesBtn.style.display = "none";
+    noBtn.style.display = "none";
+    document.getElementById("question").style.display = "none";
+
+    loading.style.display = "block";
+
+    setTimeout(() => {
+      document.body.innerHTML = `
+        <h1>YAYYYY 💕</h1>
+        <h2>Now you’re stuck with me 😌</h2>
+        <p>Happy Valentine’s Day, NIKITA 💌</p>
+      `;
+
+      // 🎉 Confetti blast
+      for (let i = 0; i < 180; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * window.innerWidth + "px";
+        confetti.style.backgroundColor =
+          ["red", "hotpink", "white", "purple"][Math.floor(Math.random() * 4)];
+        confetti.style.animationDuration =
+          (Math.random() * 2 + 1) + "s";
+        document.body.appendChild(confetti);
+      }
+    }, 2000);
+  });
+</script>
+
+</body>
+</html>
