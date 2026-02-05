@@ -74,9 +74,6 @@
 
 <div id="loading">Loading your surprise… 💕</div>
 
-<!-- html2canvas for screenshot -->
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-
 <script>
   const yesBtn = document.getElementById("yesBtn");
   const noBtn = document.getElementById("noBtn");
@@ -102,20 +99,16 @@
           <h2>Now you’re stuck with me 😌</h2>
           <p>Happy Valentine’s Day, PRIYA 💌</p>
 
-          <h2 style="margin-top:40px;">What’s our date plan? 💖</h2>
+          <img 
+            src="https://tenor.com/view/amor-happy-valentines-day-be-my-valentine-ily-i-love-you-gif-3691859818607409709"
+            alt="Cute Valentine"
+            style="margin-top:25px;width:260px;border-radius:20px;
+                   box-shadow:0 8px 20px rgba(0,0,0,0.2);"
+          />
 
-          <input id="datePlan" type="text"
-            placeholder="Type your answer here 😍"
-            style="padding:12px;font-size:1.1em;border-radius:10px;
-                   border:2px solid red;width:260px;text-align:center;" />
-
-          <br><br>
-
-          <button onclick="submitPlan()" style="background:red;color:white;">
-            Submit 💌
-          </button>
-
-          <p id="planResult" style="margin-top:20px;font-size:1.2em;"></p>
+          <p style="margin-top:25px;font-size:1.3em;">
+            Best Valentine ever 💖
+          </p>
         </div>
       `;
 
@@ -130,35 +123,6 @@
       }
     }, 2000);
   });
-
-  function submitPlan() {
-    const plan = document.getElementById("datePlan").value;
-    const result = document.getElementById("planResult");
-
-    if (!plan.trim()) {
-      result.innerHTML = "Don’t be shy 😜";
-      return;
-    }
-
-    result.innerHTML = `Perfect 😍 Can’t wait for <b>${plan}</b> 💕`;
-
-    // 📧 Auto-email
-    const email = "niralshah331@gmail.com";
-    const subject = "Our next date plan 💖";
-    const body = `She said yes ❤️\nNext date plan: ${plan}`;
-    window.location.href =
-      `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    // 📸 Screenshot
-    setTimeout(() => {
-      html2canvas(document.getElementById("finalScreen")).then(canvas => {
-        const link = document.createElement("a");
-        link.download = "valentine-moment.png";
-        link.href = canvas.toDataURL();
-        link.click();
-      });
-    }, 800);
-  }
 </script>
 
 </body>
