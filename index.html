@@ -99,12 +99,17 @@
           <h2>Now you’re stuck with me 😌</h2>
           <p>Happy Valentine’s Day, PRIYA 💌</p>
 
-          <img 
-            src="https://tenor.com/view/amor-happy-valentines-day-be-my-valentine-ily-i-love-you-gif-3691859818607409709"
-            alt="Cute Valentine"
-            style="margin-top:25px;width:260px;border-radius:20px;
-                   box-shadow:0 8px 20px rgba(0,0,0,0.2);"
-          />
+          <div style="max-width:320px;margin:30px auto;">
+            <div class="tenor-gif-embed"
+              data-postid="3691859818607409709"
+              data-share-method="host"
+              data-aspect-ratio="1"
+              data-width="100%">
+              <a href="https://tenor.com/view/amor-happy-valentines-day-be-my-valentine-ily-i-love-you-gif-3691859818607409709">
+                Amor Happy Valentines Day GIF
+              </a>
+            </div>
+          </div>
 
           <p style="margin-top:25px;font-size:1.3em;">
             Best Valentine ever 💖
@@ -112,6 +117,13 @@
         </div>
       `;
 
+      // Load Tenor script dynamically
+      const script = document.createElement("script");
+      script.src = "https://tenor.com/embed.js";
+      script.async = true;
+      document.body.appendChild(script);
+
+      // Confetti
       for (let i = 0; i < 180; i++) {
         const c = document.createElement("div");
         c.className = "confetti";
